@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
 
-function App() {
+
+//build UI
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      count: 0
+    }
+  }
+
+  increment = () => {
+    this.setState({count: this.state.count + 1}) /* .state i use to not mutate the state directly , i want to create always a new object */
+  }
+
+  decrement = () => {
+    this.setState({count: this.state.count - 1}) /* .state i use to not mutate the state directly , i want to create always a new object */
+  }
+
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <button onClick={this.increment} className='counter'>+</button>
+   <button onClick={this.decrement} className='counter'>-</button>
+   <h2>{this.state.count}</h2> {/* will give initial state = 0 */}
     </div>
   );
 }
-
+}
 export default App;
